@@ -1,0 +1,41 @@
+﻿@model TreinamentoBenner.Models.Album
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false)
+    <div class="form-group">
+        @Html.LabelFor(m => m.GeneroId)
+        @Html.DropDownListFor(m => m.GeneroId, null, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ArtistaId)
+        @Html.DropDownList("ArtistaId", null, new {@class = "form-control"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Titulo)
+        @Html.TextBoxFor(m => m.Titulo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Titulo)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Valor)
+        @Html.TextBoxFor(m => m.Valor, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UrlArte)
+        @Html.TextBoxFor(m => m.UrlArte, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.UrlArte)
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-default"/>
+    </div>
+}

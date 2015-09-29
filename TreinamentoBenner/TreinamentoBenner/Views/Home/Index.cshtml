@@ -1,0 +1,29 @@
+﻿@using TreinamentoBenner.Helpers
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Index</h2>
+
+@helper ListingItems(string[] items)
+{
+    <ol>
+        @foreach (var item in items)
+        {
+            <li>@item</li>
+        }
+    </ol>
+}
+
+<h2>Linguagens de programação</h2>
+@ListingItems(new [] {"C", "C++", "C#"})
+
+<h2>Lista de livros</h2>
+@ListingItems(new []
+{
+    "C for Dummies",
+    "C++ for Dummies",
+    "C# for Dummies"
+})
+
+@Html.LinkVoltar("idDoLink")

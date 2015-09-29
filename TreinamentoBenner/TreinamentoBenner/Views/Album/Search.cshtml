@@ -1,0 +1,28 @@
+﻿@model IQueryable<TreinamentoBenner.Models.Album>
+
+@{
+    ViewBag.Title = "Search Albums";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form action="/Album/Search">
+    <input type="text" name="q"/>
+    <input type="submit" value="Buscar"/>
+</form>
+
+<table>
+    <tr>
+        <th>Artista</th>
+        <th>Titulo</th>
+        <th>Valor</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Artista</td>
+            <td>@item.Titulo</td>
+            <td>@item.Valor.ToString("C")</td>
+        </tr>
+    }
+</table>

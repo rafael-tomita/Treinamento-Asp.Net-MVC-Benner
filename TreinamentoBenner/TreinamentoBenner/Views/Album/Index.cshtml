@@ -1,0 +1,24 @@
+﻿@model IEnumerable<TreinamentoBenner.Models.Album>
+
+@{
+    ViewBag.Title = "Albums";
+}
+
+<h2>Index</h2>
+<table>
+    <tr>
+        <th>Artista</th>
+        <th>Titulo</th>
+        <th>Valor</th>
+        <th>UrlArte</th>
+    </tr>
+    @foreach (var album in Model)
+    {
+        <tr>
+            <td>@album.Artista.Nome</td>
+            <td>@album.Titulo</td>
+            <td>@album.Valor</td>
+            <td>@album.UrlArte</td>
+        </tr>
+    }
+</table>
