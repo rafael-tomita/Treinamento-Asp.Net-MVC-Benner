@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using TreinamentoBenner.Resources;
+using TreinamentoBenner.ValidationAnnotation;
 
 namespace TreinamentoBenner.Models
 {
@@ -38,6 +39,7 @@ namespace TreinamentoBenner.Models
             ErrorMessage = @"Url deve estar no seguinte formato: http://asd/la.jpg")]
         public int UrlArte { get; set; }
 
+        [MaxWord(3)]
         [Display(ResourceType = typeof(AlbumResource), Name = "Title")]
         [StringLength(50, MinimumLength = 2)]
         public string Titulo { get; set; }

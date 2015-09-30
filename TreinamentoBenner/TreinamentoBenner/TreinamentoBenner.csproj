@@ -169,13 +169,18 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Context\Initializer\LojaInitializer.cs" />
     <Compile Include="Context\LojaContext.cs" />
+    <Compile Include="Controllers\Account2Controller.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArtistasController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\GeneroController.cs" />
     <Compile Include="Controllers\HistoricoController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\WelcomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Facade\SessionFacade.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Filters\LogActionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,6 +220,7 @@
       <DependentUpon>AlbumResource.pt-BR.resx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="ValidationAnnotation\MaxWordAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -275,6 +281,14 @@
     <Content Include="Views\Album\Index.cshtml" />
     <Content Include="Views\Album\Create.cshtml" />
     <Content Include="Views\Album\Search.cshtml" />
+    <Content Include="Views\Artistas\Create.cshtml" />
+    <Content Include="Views\Artistas\Delete.cshtml" />
+    <Content Include="Views\Artistas\Details.cshtml" />
+    <Content Include="Views\Artistas\Edit.cshtml" />
+    <Content Include="Views\Artistas\Index.cshtml" />
+    <Content Include="Views\Genero\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Albuns.cshtml" />
+    <Content Include="Views\Accountt\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,6 +5,7 @@ using TreinamentoBenner.Models;
 
 namespace TreinamentoBenner.Controllers
 {
+    [Authorize]
     public class AlbumController : BaseController
     {
         private readonly LojaContext _db = new LojaContext();

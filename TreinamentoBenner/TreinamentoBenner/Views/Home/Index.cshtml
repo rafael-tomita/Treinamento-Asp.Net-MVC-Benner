@@ -27,3 +27,77 @@
 })
 
 @Html.LinkVoltar("idDoLink")
+
+@section scripts
+{
+    <style>
+        .red {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 10px;
+        }
+        .clear {clear:both;}
+    </style>
+    <script>
+        $(function () {
+            "use strict";
+
+            $("div.red").click(function() {
+                $(this).hide();
+            });
+
+            $("[language='German'], [language='English'").hide();
+            $("[language='Portuguese'").show();
+
+            $("a[lang]").click(function() {
+                $("[language]").hide();
+                $("[language=" + $(this).attr("lang") + "]").show();
+            });
+
+
+            $("p").each(function(i, e) {
+                $("#elemento").append(new Option($(this).html(), i + 1));
+            });
+        });
+
+        function seleciona(indice) {
+            alert($("p").slice(indice - 1, indice).html());
+        }
+
+        function mostrar() {
+            $("div.red").show();
+        }
+    </script>
+}
+
+<br/>
+<div class="clear"></div>
+<div class="red"></div>
+<div class="red"></div>
+<div class="red"></div>
+<div class="red"></div>
+<div class="red"></div>
+<div class="clear">
+    <input type="button" onclick="mostrar()" value="Mostrar"/>
+</div>
+
+<p>Paragrafo 1</p>
+<p>Paragrafo 2</p>
+<p id="terceiro">Paragrafo 3</p>
+<p>Paragrafo 4</p>
+<input value="Count" type="button" onclick="count()"/>
+
+
+<h1 language="Portuguese">Selecionando elementos</h1>
+<h1 language="English">Selecting elements</h1>
+<h1 language="German">Bla bla bla</h1>
+
+<a href="#" lang="Portuguese">Português</a>
+<a href="#" lang="English">English</a>
+<a href="#" lang="German">German</a>
+
+<select id="elemento"></select>
+<input type="button" onclick="seleciona($('#elemento').val())" value="Selecionar elemento"/>
+

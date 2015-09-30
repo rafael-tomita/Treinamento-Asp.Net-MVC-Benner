@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TreinamentoBenner.Models
 {
@@ -7,6 +8,7 @@ namespace TreinamentoBenner.Models
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
-        public virtual ICollection<Album> Type { get; set; }
+        [UIHint("Albuns")]
+        public virtual ICollection<Album> Albuns { get; set; }
     }
 }
