@@ -63,6 +63,10 @@
   <ItemGroup>
     <Compile Include="Context\Initializer\TreinamentoBennerInitializer.cs" />
     <Compile Include="Context\TreinamentoBennerContext.cs" />
+    <Compile Include="InversionOfControl\Modules\InfraNinjectModule.cs" />
+    <Compile Include="InversionOfControl\IoC.cs" />
+    <Compile Include="InversionOfControl\Modules\RepositoryNinjectModule.cs" />
+    <Compile Include="InversionOfControl\Modules\ServiceNinjectModule.cs" />
     <Compile Include="Model\Cidade.cs" />
     <Compile Include="Model\Pessoa.cs" />
     <Compile Include="Model\Telefone.cs" />
@@ -80,9 +84,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="InversionOfControl\Modules\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
