@@ -28,7 +28,55 @@
 
 @Html.LinkVoltar("idDoLink")
 
+<table ng-app="App" ng-controller="ctrl">
+    <tr>
+        <th ng-click="order('Name')">
+            Name
+            <span class="sortorder"
+                  ng-show="predicate === 'Name'"
+                  ng-class="{reverse: reverse}"></span>
+        </th>
+        <th ng-click="order('City')">
+            City
+            <span class="sortorder"
+                  ng-show="predicate === 'City'"
+                  ng-class="{reverse: reverse}"></span>
+        </th>
+    <tr ng-repeat="c in customers | orderBy:predicate:reverse">
+        <td>{{c.Name}}</td>
+        <td>{{c.City}}</td>
+    </tr>
+</table>
+
 @section scripts
+{
+    <style>
+        .sortorder:after {
+            content: '\25b2';
+        }
+
+        .sortorder.reverse:after {
+            content: '\25bc';
+        }
+    </style>
+    <script>
+        angular.module("App", []);
+        angular.module("App").controller("ctrl", function($scope, $http) {
+            $http.get("http://www.w3schools.com/angular/customers.php").success(function(response) {
+                $scope.predicateValues = "Name";
+                $scope.reverse = true;
+                $scope.order = function(predicate) {
+                    $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+                    $scope.predicate = predicate;
+                };
+
+                $scope.customers = response.records;
+            });
+        });
+    </script>
+}
+
+@*@section scripts
 {
     <style>
         .red {
@@ -43,6 +91,19 @@
     <script>
         $(function () {
             "use strict";
+
+            $(document).keyup(function (event) {
+                $("#log").append(String.fromCharCode(event.keyCode) + " .. ");
+            });
+
+            $("table tr:even").not(":first").css("background-color", "#ccc");
+            var corAntiga;
+            $("table tr").not(":first").hover(function () {
+                corAntiga = $(this).css("background-color");
+                $(this).css("background-color", "yellow").css("cursor", "pointer");
+            }, function () {
+                $(this).css("background-color", corAntiga).css("cursor", "default");
+            });
 
             $("div.red").click(function() {
                 $(this).hide();
@@ -62,6 +123,20 @@
             });
         });
 
+        $.ajaxSetup({
+            cache: false
+        });
+        function carregar() {
+            //$("#alvo").load("@Url.Action("Index", "Ajax")");
+            $.get("@Url.Action("Index", "Ajax")", 
+            {
+                id: 1,
+                string: "blah"
+            }, function (result) {
+                $("#alvo").html(result);
+            });
+        }
+
         function seleciona(indice) {
             alert($("p").slice(indice - 1, indice).html());
         }
@@ -71,6 +146,11 @@
         }
     </script>
 }
+
+<div id="alvo"></div>
+<input type="button" value="Carregar" onclick="carregar()" />
+
+<div id="log"></div>
 
 <br/>
 <div class="clear"></div>
@@ -100,4 +180,14 @@
 
 <select id="elemento"></select>
 <input type="button" onclick="seleciona($('#elemento').val())" value="Selecionar elemento"/>
+
+<table>
+    <tr>
+        <th>Asd</th>
+    </tr>
+    <tr><td>Bla</td></tr>
+    <tr><td>KA</td></tr>
+    <tr><td>ashdja</td></tr>
+    <tr><td>KAsdasd</td></tr>
+</table>*@
 
