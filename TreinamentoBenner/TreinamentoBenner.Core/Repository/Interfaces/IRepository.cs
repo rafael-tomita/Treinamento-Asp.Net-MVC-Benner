@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace TreinamentoBenner.Core.Repository.Common
+namespace TreinamentoBenner.Core.Repository.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : class
     {

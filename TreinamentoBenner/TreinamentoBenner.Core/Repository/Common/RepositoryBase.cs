@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.Practices.ServiceLocation;
 using TreinamentoBenner.Core.Context;
+using TreinamentoBenner.Core.Repository.Interfaces;
 
 namespace TreinamentoBenner.Core.Repository.Common
 {
