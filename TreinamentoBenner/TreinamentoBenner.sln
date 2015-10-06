@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreinamentoBenner", "Treina
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreinamentoBennerTests", "TreinamentoBennerTests\TreinamentoBennerTests.csproj", "{79E82508-89A6-4914-8BDF-F82BED175139}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreinamentoBenner.Core", "TreinamentoBenner.Core\TreinamentoBenner.Core.csproj", "{3C0F12D0-90F2-41D7-B104-9B42C0104CC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{79E82508-89A6-4914-8BDF-F82BED175139}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79E82508-89A6-4914-8BDF-F82BED175139}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79E82508-89A6-4914-8BDF-F82BED175139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C0F12D0-90F2-41D7-B104-9B42C0104CC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C0F12D0-90F2-41D7-B104-9B42C0104CC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C0F12D0-90F2-41D7-B104-9B42C0104CC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C0F12D0-90F2-41D7-B104-9B42C0104CC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
