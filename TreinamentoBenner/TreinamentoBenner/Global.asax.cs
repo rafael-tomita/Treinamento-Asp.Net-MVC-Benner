@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using TreinamentoBenner.Context.Initializer;
+using TreinamentoBenner.Core.Context.Initializer;
 
 namespace TreinamentoBenner
 {
@@ -11,6 +12,7 @@ namespace TreinamentoBenner
         protected void Application_Start()
         {
             Database.SetInitializer(new LojaInitializer());
+            Database.SetInitializer(new TreinamentoBennerInitializer());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

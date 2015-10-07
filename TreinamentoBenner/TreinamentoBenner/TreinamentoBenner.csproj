@@ -202,6 +202,7 @@
     <Compile Include="Controllers\GeneroController.cs" />
     <Compile Include="Controllers\HistoricoController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
+    <Compile Include="Controllers\PessoaController.cs" />
     <Compile Include="Controllers\WelcomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -319,6 +320,8 @@
     <Content Include="Views\Genero\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Albuns.cshtml" />
     <Content Include="Views\Accountt\Login.cshtml" />
+    <Content Include="Views\Pessoa\Index.cshtml" />
+    <Content Include="Views\Pessoa\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -342,6 +345,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AlbumResource.pt-BR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TreinamentoBenner.Core\TreinamentoBenner.Core.csproj">
+      <Project>{3C0F12D0-90F2-41D7-B104-9B42C0104CC1}</Project>
+      <Name>TreinamentoBenner.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

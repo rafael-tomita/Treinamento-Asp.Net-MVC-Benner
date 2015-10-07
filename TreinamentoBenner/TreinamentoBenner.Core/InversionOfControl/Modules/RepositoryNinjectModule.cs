@@ -8,7 +8,9 @@ namespace TreinamentoBenner.Core.InversionOfControl.Modules
     {
         public override void Load()
         {
+            Bind<IRepositoryCidade>().To<RepositoryCidade>();
             Bind<IRepositoryPessoa>().To<RepositoryPessoa>();
+            Bind<IRepositoryTelefone>().To<RepositoryTelefone>();
         }
     }
 }

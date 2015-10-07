@@ -17,8 +17,11 @@ namespace TreinamentoBenner.Core.InversionOfControl
 
         private IKernel GetNinjectModules()
         {
-            return new StandardKernel(new ServiceNinjectModule(), 
-                new InfraNinjectModule(), new RepositoryNinjectModule());
+            return new StandardKernel(
+                new ServiceNinjectModule(),
+                new InfraNinjectModule(),
+                new RepositoryNinjectModule()
+            );
         }
     }
 }
