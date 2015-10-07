@@ -9,6 +9,8 @@ namespace TreinamentoBenner.Core.InversionOfControl.Modules
         public override void Load()
         {
             Bind<IServicePessoa>().To<ServicePessoa>();
+            Bind<IServiceCidade>().To<ServiceCidade>();
+            Bind<IServiceTelefone>().To<ServiceTelefone>();
         }
     }
 }

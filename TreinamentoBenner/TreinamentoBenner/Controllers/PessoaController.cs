@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using TreinamentoBenner.Core.Model;
 using TreinamentoBenner.Core.Service.Interfaces;
 
@@ -7,10 +8,12 @@ namespace TreinamentoBenner.Controllers
     public class PessoaController : Controller
     {
         private readonly IServicePessoa _servicePessoa;
+        private readonly IServiceCidade _serviceCidade;
 
-        public PessoaController(IServicePessoa servicePessoa)
+        public PessoaController(IServicePessoa servicePessoa, IServiceCidade serviceCidade)
         {
             _servicePessoa = servicePessoa;
+            _serviceCidade = serviceCidade;
         }
 
         public ActionResult Index()
@@ -18,9 +21,20 @@ namespace TreinamentoBenner.Controllers
             return View(_servicePessoa.All(true));
         }
 
-        public ActionResult Create(int? id)
+        public ActionResult Create(int id = 0)
         {
-            return id == null ? View(new Pessoa()) : View(_servicePessoa.Find(id.Value) ?? new Pessoa());
+            var pessoa = _servicePessoa.Find(id) ?? new Pessoa();
+
+            Dropdown(pessoa);
+
+            return View(pessoa);
+        }
+
+        private void Dropdown(Pessoa pessoa)
+        {
+            var uf = pessoa.Cidade?.Uf;
+            ViewBag.Ufs = new SelectList(_serviceCidade.ListarEstados(), uf);
+            ViewBag.IdCidade = new SelectList(_serviceCidade.Query(q => q.Uf == uf), "Id", "Nome", pessoa.IdCidade);
         }
 
         [HttpPost]

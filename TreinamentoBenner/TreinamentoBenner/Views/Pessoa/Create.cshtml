@@ -25,8 +25,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdCidade, "IdCidade", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IdCidade", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.IdCidade, "", new { @class = "text-danger" })
+                @Html.DropDownList("Ufs", null, "", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("IdCidade", null, htmlAttributes: new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.IdCidade, "", new {@class = "text-danger"})
             </div>
         </div>
 
@@ -41,3 +42,17 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section scripts
+{
+    <script src="@Url.Content("~/Scripts/Pessoa/scriptCidade.js")"></script>
+    <script>
+        var scriptCidade;
+        var urlCidade = "@Url.Action("AjaxOption", "Cidade")";
+
+        $(function() {
+            scriptCidade = new ScriptCidade("Ufs", "IdCidade", urlCidade);
+            scriptCidade.iniciar();
+        });
+    </script>
+}
