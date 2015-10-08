@@ -12,5 +12,7 @@ namespace TreinamentoBenner.Context
         public System.Data.Entity.DbSet<TreinamentoBenner.Core.Model.Pessoa> Pessoas { get; set; }
 
         public System.Data.Entity.DbSet<TreinamentoBenner.Core.Model.Cidade> Cidades { get; set; }
+
+        public System.Data.Entity.DbSet<TreinamentoBenner.Core.Model.Telefone> Telefones { get; set; }
     }
 }

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TreinamentoBenner.Core.Model.Telefone>
+
+<p>
+    <a href="javascript:abrirDialogTelefone();">Novo</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pessoa.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                <a href="javascript:alterarTelefone(@item.Id, '@item.Numero');">Editar</a>
+                <a href="javascript:excluirTelefone(@item.Id);">Excluir</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,12 @@
+﻿@model TreinamentoBenner.Core.Model.Telefone
+
+<div class="container">
+    <form>
+        <div>
+            @Html.HiddenFor(m => m.Id, new { id = "TelefoneId" })
+
+            @Html.LabelFor(m => m.Numero, new { @for = "TelefoneNumero" })
+            @Html.EditorFor(m => m.Numero, new { id = "TelefoneNumero", @class = "required" })
+        </div>
+    </form>
+</div>

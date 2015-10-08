@@ -12,7 +12,7 @@ namespace TreinamentoBenner.Core.Service.Common
 
         public ServiceBase(IRepository<TEntity> repository)
         {
-            _repository = repository;
+            this._repository = repository;
         }
 
         public TEntity Find(int id)

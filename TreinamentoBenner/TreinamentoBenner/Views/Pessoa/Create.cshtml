@@ -6,10 +6,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Pessoa</h4>
         <hr />
@@ -26,33 +26,67 @@
             @Html.LabelFor(model => model.IdCidade, "IdCidade", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Ufs", null, "", htmlAttributes: new { @class = "form-control" })
-                @Html.DropDownList("IdCidade", null, htmlAttributes: new {@class = "form-control"})
-                @Html.ValidationMessageFor(model => model.IdCidade, "", new {@class = "text-danger"})
+                @Html.DropDownList("IdCidade", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdCidade, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default"/>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+    </div>
+
+    <div class="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#tab-panel" role="tab" data-toggle="tab">Telefone</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div role="tabpanel" class="active" id="tab-panel">
+                @Html.Action("AjaxList", "Telefone", new { Model.Id });
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div id="dialogTelefone">
+    @Html.Action("DialogForm", "Telefone")
 </div>
 
 @section scripts
 {
     <script src="@Url.Content("~/Scripts/Pessoa/scriptCidade.js")"></script>
+    <script src="@Url.Content("~/Scripts/Pessoa/scriptTelefone.js")"></script>
     <script>
-        var scriptCidade;
-        var urlCidade = "@Url.Action("AjaxOption", "Cidade")";
+        var scriptCidade, scriptTelefone;
+        var idPessoa = @Model.Id;
 
-        $(function() {
+        var urlCidade = "@Url.Action("AjaxOption", "Cidade")";
+        var urlsTelefone = {
+            adicionar: "@Url.Action("AjaxAdd", "Telefone")",
+            remover: "@Url.Action("AjaxRemove", "Telefone")",
+            listar: "@Url.Action("AjaxList", "Telefone")"
+        }
+
+        function abrirDialogTelefone() {
+            scriptTelefone.abrirDialog();
+        }
+
+        function alterarTelefone(id, numero) {
+            scriptTelefone.alterar(id, numero);
+        }
+
+        $(function () {
             scriptCidade = new ScriptCidade("Ufs", "IdCidade", urlCidade);
             scriptCidade.iniciar();
+
+            scriptTelefone = new ScriptTelefone(idPessoa, urlsTelefone);
+            scriptTelefone.iniciar();
         });
     </script>
 }
