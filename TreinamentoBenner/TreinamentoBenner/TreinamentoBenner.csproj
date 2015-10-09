@@ -298,6 +298,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Cidade\cidadeController.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -363,6 +364,7 @@
     <Content Include="Views\Pessoa\Create.cshtml" />
     <Content Include="Views\Cidade\AjaxOption.cshtml" />
     <Content Include="Views\Telefone\AjaxList.cshtml" />
+    <None Include="Views\Cidade\Index.cshtml" />
     <None Include="Views\Telefone\DialogForm.cshtml" />
   </ItemGroup>
   <ItemGroup>

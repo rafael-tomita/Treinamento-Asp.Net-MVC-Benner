@@ -5,8 +5,8 @@
         <div>
             @Html.HiddenFor(m => m.Id, new { id = "TelefoneId" })
 
-            @Html.LabelFor(m => m.Numero, new { @for = "TelefoneNumero" })
-            @Html.EditorFor(m => m.Numero, new { id = "TelefoneNumero", @class = "required" })
+            @Html.LabelFor(m => m.Numero, new { @for = "Numero" })
+            @Html.EditorFor(m => m.Numero, new { @class = "required" })
         </div>
     </form>
 </div>

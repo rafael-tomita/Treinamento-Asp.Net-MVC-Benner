@@ -33,25 +33,28 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default"/>
+                <input type="submit" value="Create" class="btn btn-default" />
                 @Html.ActionLink("Back to List", "Index")
             </div>
         </div>
     </div>
 
-    <div class="tabpanel">
-        <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active">
-                <a href="#tab-panel" role="tab" data-toggle="tab">Telefone</a>
-            </li>
-        </ul>
+    if (Model.Id > 0)
+    {
+        <div class="tabpanel">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#tab-panel" role="tab" data-toggle="tab">Telefone</a>
+                </li>
+            </ul>
 
-        <div class="tab-content">
-            <div role="tabpanel" class="active" id="tab-panel">
-                @Html.Action("AjaxList", "Telefone", new { Model.Id });
+            <div class="tab-content">
+                <div role="tabpanel" class="active" id="tab-telefone">
+                    @Html.Action("AjaxList", "Telefone", new { Model.Id })
+                </div>
             </div>
         </div>
-    </div>
+    }
 }
 
 <div id="dialogTelefone">
@@ -70,7 +73,7 @@
         var urlsTelefone = {
             adicionar: "@Url.Action("AjaxAdd", "Telefone")",
             remover: "@Url.Action("AjaxRemove", "Telefone")",
-            listar: "@Url.Action("AjaxList", "Telefone")"
+            listar: "@Url.Action("AjaxList", "Telefone", new {@Model.Id})"
         }
 
         function abrirDialogTelefone() {
@@ -79,6 +82,10 @@
 
         function alterarTelefone(id, numero) {
             scriptTelefone.alterar(id, numero);
+        }
+
+        function excluirTelefone(id) {
+            scriptTelefone.excluir(id);
         }
 
         $(function () {

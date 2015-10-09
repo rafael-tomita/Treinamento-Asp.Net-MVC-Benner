@@ -3,7 +3,7 @@
 
     var dialog = $("#dialogTelefone");
     var campoId = $("#TelefoneId");
-    var campoNumero = $("#TelefoneNumero");
+    var campoNumero = $("#Numero");
     var tab = $("#tab-telefone");
     var form = $("form", dialog);
 
@@ -43,7 +43,7 @@
 
     this.excluir = function(id) {
         if (confirm("Você tem certeza que deseja excluir?")) {
-            $.get(urls.remover, { id: id }, function(data) {
+            $.post(urls.remover, { id: id }, function(data) {
                 atualizar();
 
                 if (data.Message) {
@@ -52,7 +52,31 @@
             });
         }
     };
- 
-    this.iniciar = function() {
+
+    this.alterar = function(id, numero) {
+        campoId.val(id);
+        campoNumero.val(numero);
+        this.abrirDialog();
+    };
+
+    this.iniciar = function () {
+        dialog.dialog({
+            title: "Adicionar Telefone",
+            autoOpen: false,
+            resizable: false,
+            modal: true,
+            buttons: {
+                "Salvar": adicionar,
+                "Fechar": fecharDialog
+            },
+            close: function() {
+                form.validate().resetForm();
+            }
+        });
+
+        form.submit(function($event) {
+            adicionar();
+            $event.preventDefault();
+        });
     };
 }

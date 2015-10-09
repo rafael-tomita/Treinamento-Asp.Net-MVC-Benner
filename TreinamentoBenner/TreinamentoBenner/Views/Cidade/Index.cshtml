@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Cidade";
+}
+
+<h2>@ViewBag.Title</h2>
+
+    <div ng-app="app" ng-controller="CidadeController">
+        <form ng-submit="add()">
+            <label>
+                Cidade
+                <input type="text" name="nome" ng-model="cidade.Nome" />
+            </label>
+
+            <label>
+                Uf
+                <input type="text" name="Uf" ng-model="cidade.Uf" />
+            </label>
+
+            <p>
+                <input type="submit" value="{{editing ? 'Alterar' : 'Adicionar'}}" />
+                <input type="button" ng-show="editing" ng-click="cancel()" value="Cancelar" />
+            </p>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cidade in cidades">
+                    <td>{{cidade.Id}}</td>
+                    <td ng-bind="cidade.Nome"></td>
+                    <td ng-bind="cidade.Uf"></td>
+                    <td>
+                        <a href="javascript:;" ng-click="edit(cidade)">Editar</a>
+                        <a href="javascript:;" ng-click="remove(cidade)">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+@section scripts
+{
+    <script src="~/Scripts/Cidade/cidadeController.js"></script>
+    <script>
+        app.factory("params", function() {
+            return {
+                urlList: '@Url.Action("AjaxList")',
+                urlAdd: '@Url.Action("AjaxAdd")',
+                urlRemove: '@Url.Action("AjaxRemove")'
+            };
+        });
+    </script>
+}
