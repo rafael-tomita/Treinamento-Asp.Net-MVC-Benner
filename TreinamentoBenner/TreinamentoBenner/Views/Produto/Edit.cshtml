@@ -1,0 +1,33 @@
+﻿<h3>{{title}}</h3>
+
+<br />
+
+<form>
+    <strong>{{Error}}</strong>
+
+    <div>
+        <label>
+            Codigo
+            <input type="text" readonly="readonly" id="Id" ng-model="Produto.Id"/>
+        </label>
+
+        <label>
+            Nome
+            <input type="text" id="nome" ng-model="Produto.Nome"/>
+        </label>
+
+        <label>
+            Valor
+            <input type="text" id="valor" ng-model="Produto.Valor"/>
+        </label>
+
+        <label>
+            <input type="checkbox" ng-model="Produto.Ativo"/> Ativo
+        </label>
+
+        <p>
+            <a href="#/list">Voltar</a>
+            <button type="submit" ng-click="save()">Salvar</button>
+        </p>
+    </div>
+</form>

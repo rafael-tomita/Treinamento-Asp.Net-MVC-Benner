@@ -24,6 +24,8 @@ namespace TreinamentoBenner.Core.Context.Initializer
             context.Pessoas.Add(new Pessoa { Nome = "Erick", Cidade = maringa });
             context.Pessoas.Add(new Pessoa { Nome = "Outro cara", Cidade = antaGorda });
 
+            context.Produtos.Add(new Produto {Nome = "Produto 1", Ativo = true, Valor = 100});
+
             base.Seed(context);
         }
     }

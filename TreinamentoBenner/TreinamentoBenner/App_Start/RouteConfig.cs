@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace TreinamentoBenner
@@ -13,6 +14,12 @@ namespace TreinamentoBenner
                 name: "Historico",
                 url: "Arquivo/{data}",
                 defaults: new { controller = "Historico", action = "Arquivo" }
+            );
+
+            routes.MapHttpRoute(
+                "DefaultApi",
+                "api/{controller}/{id}",
+                new { id = RouteParameter.Optional }
             );
 
             routes.MapRoute(

@@ -1,0 +1,18 @@
+﻿<div>
+    Você tem certeza que deseja excluir?
+</div>
+
+<br/>
+
+<form>
+    <label>Nome</label>
+    <p ng-bind="Produto.Nome"></p>
+
+    <label>Valor</label>
+    <p ng-bind="Produto.Valor"></p>
+
+    <div>
+        <a href="#/list">Voltar</a>
+        <button type="submit" ng-click="delete()">Excluir</button>
+    </div>
+</form>

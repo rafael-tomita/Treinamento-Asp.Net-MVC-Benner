@@ -10,5 +10,7 @@ namespace TreinamentoBenner.Core.Context
         public DbSet<Pessoa> Pessoas { get; set; }
 
         public DbSet<Telefone> Telefones { get; set; }
+
+        public DbSet<Produto> Produtos { get; set; }
     }
 }

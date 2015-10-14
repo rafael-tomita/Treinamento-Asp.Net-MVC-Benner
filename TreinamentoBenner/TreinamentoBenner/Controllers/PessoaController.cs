@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using Microsoft.Ajax.Utilities;
 using TreinamentoBenner.Core.Model;
 using TreinamentoBenner.Core.Service.Interfaces;
 

@@ -1,0 +1,26 @@
+﻿<div>
+    <a href="#/create">Novo</a>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Valor</th>
+            <th>Ativo</th>
+            <th>#</th>
+        </tr>
+        <tr ng-repeat="item in Produtos">
+            <td ng-bind="item.Id"></td>
+            <td ng-bind="item.Nome"></td>
+            <td ng-bind="item.Valor | number:2"></td>
+            <td ng-bind="item.Ativo ? 'Ativo' : 'Descontinuado'"
+                ng-class="{true:'label-success', false:'label-danger', '':'hidden'}[item.Ativo]"></td>
+            <td>
+                <a href="#/edit/{{item.Id}}">Editar</a>
+                <a href="#/delete/{{item.Id}}">Excluir</a>
+            </td>
+        </tr>
+    </table>
+</div>

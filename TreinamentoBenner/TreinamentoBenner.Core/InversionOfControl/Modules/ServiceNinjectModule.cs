@@ -11,6 +11,7 @@ namespace TreinamentoBenner.Core.InversionOfControl.Modules
             Bind<IServicePessoa>().To<ServicePessoa>();
             Bind<IServiceCidade>().To<ServiceCidade>();
             Bind<IServiceTelefone>().To<ServiceTelefone>();
+            Bind<IServiceProduto>().To<ServiceProduto>();
         }
     }
 }

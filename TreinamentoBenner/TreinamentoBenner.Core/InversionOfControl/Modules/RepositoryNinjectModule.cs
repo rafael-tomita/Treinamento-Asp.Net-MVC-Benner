@@ -11,6 +11,7 @@ namespace TreinamentoBenner.Core.InversionOfControl.Modules
             Bind<IRepositoryCidade>().To<RepositoryCidade>();
             Bind<IRepositoryPessoa>().To<RepositoryPessoa>();
             Bind<IRepositoryTelefone>().To<RepositoryTelefone>();
+            Bind<IRepositoryProduto>().To<RepositoryProduto>();
         }
     }
 }
