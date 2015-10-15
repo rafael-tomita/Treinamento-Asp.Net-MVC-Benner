@@ -10,6 +10,7 @@ namespace TreinamentoBennerTests.Services
     public class InMemoryServicePessoa : IServicePessoa
     {
         private readonly List<Pessoa> db;
+        private static int seed = 0;
 
         public InMemoryServicePessoa()
         {
@@ -42,6 +43,8 @@ namespace TreinamentoBennerTests.Services
 
         public void Create(Pessoa entity)
         {
+            //entity.Id = ++seed;
+            //Save(entity);
         }
 
         public void Update(Pessoa entity)
