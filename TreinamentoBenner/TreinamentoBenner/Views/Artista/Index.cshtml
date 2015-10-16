@@ -1,0 +1,131 @@
+﻿@{
+
+}
+@section scripts {
+    @Scripts.Render("~/bundles/SignalR")
+    <script src="signalr/hubs"></script>
+    <script>
+        "use strict";
+        var app = angular.module("app", []);
+        app.controller("Controller", function ($scope) {
+            var hub = $.connection.artistaHub;
+
+            $scope.add = function () {
+                hub.server.add($scope.add_artista);
+                $scope.add_artista.Nome = "";
+            };
+            $scope.delete = function (artista) {
+                hub.server.delete(artista);
+            };
+            $scope.edit = function (artista) {
+                hub.server.takeLook(artista);
+            };
+            $scope.update = function () {
+                hub.server.update($scope.add_artista);
+                $scope.edit_artista = undefined;
+            };
+            $scope.isEdit = function (artista) {
+                if ($scope.edit_artista == undefined) {
+                    return false;
+                }
+                return $scope.edit_artista.Id = artista.Id;
+            };
+
+            //SignalR events
+            hub.client.add = function (artista) {
+                $scope.artistas.push(artista);
+                $scope.$apply();
+            };
+            hub.client.all = function (artistas) {
+                $scope.artistas = artistas;
+            };
+            hub.client.delete = function (artista) {
+                removeById(artista.ID, $scope.artistas);
+                $scope.$apply();
+            };
+            hub.client.takeLookSuccess = function (artista) {
+                $scope.edit_artista = artista;
+                $scope.$apply();
+            };
+            hub.client.update = function (artista) {
+                updateById(artista.Id, $scope.artistas, artista);
+                $scope.$apply();
+            };
+            hub.client.allLocks = function (locks) {
+                for (var i = 0; i < $scope.artistas.length; i++) {
+                    $scope.artistas[i].isLocked = false;
+                }
+                for (var j = 0; j < locks.length; j++) {
+                    for (var k = 0; k < $scope.artistas.length; k++) {
+                        if (locks[j] === $scope.artistas[k].Id) {
+                            $scope.artistas[k].IsLocked = true;
+                            break;
+                        }
+                    }
+                }
+                $scope.$apply();
+            };
+            $.connection.hub.start().done(function () {
+                console.log("start");
+            }).fail(function () {
+                console.log("fail");
+            });
+        });
+
+        function updateById(id, array, item) {
+            for (var i = 0; i < array.length; i++) {
+                if (id === array[i]) {
+                    array[i] = item;
+                }
+            }
+        }
+
+        function removeById(id, array) {
+            for (var i = 0; i < array.length; i++) {
+                if (id === array[i]) {
+                    array.splice(i, 1);
+                }
+            }
+        }
+    </script>
+}
+<div ng-app="app" ng-controller="Controller">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Excluir</th>
+            <th>Editar</th>
+            <th>Atualizar</th>
+        </tr>
+        <tr ng-repeat="artista in artistas">
+            <td>{{artista.Id}}</td>
+            <td ng-show="!isEdit(artista)">{{artista.Nome}}</td>
+            <td ng-show="isEdit(artista)">
+                <input type="text" ng-model="edit_artista.Nome" />
+            </td>
+            <td>
+                <button name="deleteButton" ng-click="delete(artista)" ng-show="!artista.IsLocked">
+                    Excluir
+                </button>
+            </td>
+            <td>
+                <button name="editButton" ng-click="edit(artista)" ng-show="!artista.IsLocked">
+                    Editar
+                </button>
+            </td>
+            <td>
+                <button name="updateButton" ng-click="update()" ng-show="!artista.IsLocked">
+                    Atualizar
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="text" ng-model="add_artista.Nome" />
+            </td>
+            <td colspan="2"><button name="addButton" ng-click="add()">Adicionar</button></td>
+        </tr>
+    </table>
+</div>
